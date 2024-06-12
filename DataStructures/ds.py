@@ -1,5 +1,6 @@
 #Python Data Structures
 
+
 #Collections
 
 #List [ ] ordered and changeable. Duplicates OK
@@ -135,3 +136,4 @@ print(len(capitals.items()))
 
 for keys,values in capitals.items():
     print(f"{keys}:{values}")
+
