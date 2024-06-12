@@ -2,34 +2,37 @@ import openpyxl
 from openpyxl import load_workbook,Workbook
 
 def reading_excel(filename):
-    book=load_workbook(filename)
+   try:
+        book=load_workbook(filename)
 
-    #active method get the currently active sheet in excel
-    sheet=book.active
+        #active method get the currently active sheet in excel
+        sheet=book.active
 
-    #Accessing single value from sheet
-    print(sheet['A1'].value)
-    cell_obj = sheet['A1': 'B5']
+        #Accessing single value from sheet
+        print(sheet['A1'].value)
+        cell_obj = sheet['A1': 'B5']
 
-    for cell1, cell2 in cell_obj:
-        print(cell1.value,cell2.value)
+        for cell1, cell2 in cell_obj:
+            print(cell1.value,cell2.value)
 
 
-    print(sheet.cell(row=1,column=2).value)
+        print(sheet.cell(row=1,column=2).value)
 
-    #Iterating all values of sheet
-    for row in sheet.iter_rows(values_only=True):
-        print(row)
+        #Iterating all values of sheet
+        for row in sheet.iter_rows(values_only=True):
+            print(row)
 
-    #getting total no of rows and columns
-    rows=sheet.max_row
-    columns=sheet.max_column
-    print(f"Total Rows {rows}")
-    print(f"Total Columns {columns}")
+        #getting total no of rows and columns
+        rows=sheet.max_row
+        columns=sheet.max_column
+        print(f"Total Rows {rows}")
+        print(f"Total Columns {columns}")
 
-    #Modyfying The Data ,After modyfing we need to save it to mmake changes
-    sheet['A2'].value="haseeb"
-    book.save(filename)
+        #Modyfying The Data ,After modyfing we need to save it to mmake changes
+        sheet['A2'].value="haseeb"
+        book.save(filename)
+   except Exception as e:
+       print(f"Error: {e}")
 
 
 def writing_excel(filename):
